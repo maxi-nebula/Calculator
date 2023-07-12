@@ -1,6 +1,8 @@
 /** @format */
 const numberButtons = document.querySelectorAll(".button");
 const resultDiv = document.querySelector(".result");
+const expressionDiv = document.querySelector(".expression");
+
 //let enteredNumbers = [];
 
 let numberEntered = "";
@@ -34,7 +36,8 @@ displayNumber = (number) => {
 };
 
 clearScreen = () => {
-  resultDiv.innerText = "";
+  resultDiv.innerText = "0";
+  expressionDiv.innerText = "";
   console.log(numberEntered);
   numberEntered = "";
   queueArray = [];
@@ -43,42 +46,28 @@ clearScreen = () => {
 identifyInput = (dNum, opArray, cItem) => {
   if (opArray.includes(cItem)) {
     pushNum = dNum.substring(0, dNum.length - 1);
-    console.log(pushNum);
+
     queueArray.push(pushNum);
     console.log(queueArray);
 
     //resultDiv.innerText = "";
     if (cItem == "=") {
-      performOperation(cItem, queueArray);
+      performOperation(queueArray, dNum);
     }
   }
-  //performOperation(input);
 };
 
-performOperation = (operator, qArray) => {
-  switch (operator) {
-    case "+":
-      console.log("add");
+performOperation = (qArray, dNum) => {
+  let result = eval(`${qArray[qArray.length - 1]}`);
+  //let expression = qArray[qArray.length - 1];
+  resultDiv.innerText = result;
 
-      break;
-    case "-":
-      console.log("subtract");
-      break;
-    case "/":
-      console.log("divide");
-      break;
-    case "*":
-      console.log("multiply");
-      break;
-    case "%":
-      console.log("modulo");
-      break;
-    case "=":
-      console.log("perform operations");
-      let result = eval(`${qArray[qArray.length - 1]}`);
-      console.log(result);
-      resultDiv.innerText = result;
+  addExpression(dNum);
+};
 
-      break;
-  }
+addExpression = (dNum) => {
+  const newtext = document.createTextNode(dNum);
+  const p1 = document.getElementById("expressiondiv");
+
+  p1.appendChild(newtext);
 };

@@ -20,14 +20,15 @@ body {
 }
 
 .buttons,
-.result {
+.result,
+.expression {
   display: flex;
   flex-wrap: wrap;
   flex: 0 1 100%;
 }
 .result {
   height: 50px;
-  border: 1px solid rgb(9, 146, 20);
+  border-bottom: 1px solid rgb(9, 146, 20);
   justify-content: flex-end;
   align-items: center;
   font-size: 1.5em;
@@ -64,4 +65,14 @@ body {
 }
 .doubleBordered {
   border: 2px solid black;
+}
+.expression {
+  height: 30px;
+
+  justify-content: flex-end;
+  align-items: center;
+  font-size: 1.5em;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 0 10px;
 }
