@@ -6,14 +6,14 @@
 body {
   min-height: 100vh;
   background-color: black;
-  background-image: url("./calc_images/siluette-g6d565dcc7_1280.jpg");
+  /*background-image: url("./calc_images/siluette-g6d565dcc7_1280.jpg");*/
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .container {
   display: flex;
-  border: 3px solid #131212;
+  border: 3px solid #f98110;
   flex-wrap: wrap;
   flex: 0 1 60%;
   min-width: 400px;
@@ -47,7 +47,7 @@ body {
   border-left: none;
   cursor: pointer;
   /*background: -webkit-linear-gradient(top, #d2d2d2, #ddd);*/
-  background-color: rgba(19, 11, 11, 0.3);
+  /* background-color: rgba(19, 11, 11, 0.3);*/
   color: #f98110;
 
   font-size: 2em;
