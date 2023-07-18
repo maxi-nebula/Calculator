@@ -11,6 +11,7 @@ let queueArray = [];
 let isOperator = false;
 let operatorArray = ["+", "-", "/", "*", "%", "="];
 let disNumber = "";
+let isEqual = false;
 
 //when a button is clicked we send the button's value to display area and also to identify if it an operator or an operand
 numberButtons.forEach((item) => {
@@ -28,6 +29,11 @@ numberButtons.forEach((item) => {
 // our number gets displayed in the display area using this function
 displayNumber = (number) => {
   //clears the screen when AC is pressed
+
+  if (isEqual == true) {
+    clearScreen();
+    isEqual = false;
+  }
   if (number == "AC") {
     clearScreen();
     return 0;
@@ -55,9 +61,9 @@ displayNumber = (number) => {
 clearScreen = () => {
   resultDiv.innerText = "0";
   expressionDiv.innerText = "";
-
   numberEntered = "";
   queueArray = [];
+  isEqual = false;
 };
 
 //identify's the input
@@ -69,22 +75,24 @@ identifyInput = (dNum, opArray, cItem) => {
 
     if (cItem == "=") {
       performOperation(queueArray, dNum);
+      isEqual = true;
     }
   }
+};
 
-  //performs required operation
-  performOperation = (qArray, dNum) => {
-    let result = eval(`${qArray[qArray.length - 1]}`);
+performOperation = (qArray, dNum) => {
+  let result = eval(`${qArray[qArray.length - 1]}`);
 
-    resultDiv.innerText = result;
+  resultDiv.innerText = result;
 
-    addExpression(dNum);
-  };
-  //adds the expression on the top of the result
-  addExpression = (dNum) => {
-    const newtext = document.createTextNode(dNum);
-    const p1 = document.getElementById("expressiondiv");
+  addExpression(dNum);
 
-    p1.appendChild(newtext);
-  };
+  isEqual = true;
+};
+
+addExpression = (dNum) => {
+  const newtext = document.createTextNode(dNum);
+  const p1 = document.getElementById("expressiondiv");
+
+  p1.appendChild(newtext);
 };
